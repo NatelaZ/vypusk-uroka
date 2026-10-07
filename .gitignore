@@ -1,0 +1,5 @@
+__pycache__/
+*.bak*
+*_gc_state.json
+config.yaml
+.DS_Store

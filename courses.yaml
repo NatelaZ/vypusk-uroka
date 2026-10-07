@@ -1,0 +1,38 @@
+# Курсы, которые выпускаются этим скиллом. Один курс = одна запись.
+# Пути внутри курса — относительно папки курса (Курсы/<dir>/). Плейсхолдеры:
+#   {module} — номер модуля (2), {num} — номер урока в модуле (2), {dash} — «2-2», {dot} — «2.2».
+# Это ШАБЛОН: подставьте свои значения вместо <…>.
+
+shared:
+  montage_root: ~/Documents/My_agents/Монтаж            # пережатие, расшифровка чанками, kb_export
+  kinescope_config: ~/path/to/config.yaml               # YAML с полем kinescope_api_key (ключ хранится ВНЕ скилла)
+  visual_root: ~/Documents/My_agents/Визуал              # портреты для обложек (эталон внешности)
+  kb_cli: ~/Documents/My_agents/База знаний/bin/kb
+  voice_lint: ~/.claude/skills/<ваш-скилл-голоса>/scripts/voice-lint.mjs
+  chrome: /Applications/Google Chrome.app/Contents/MacOS/Google Chrome
+
+courses:
+  my-course:
+    name: <Название курса>
+    dir: <Папка курса внутри Курсы/>
+    kinescope_project: <uuid проекта Kinescope>                 # явно, не дефолт конфига
+    kinescope_title: "<Курс> {dash}"                            # «Курс 2-2»
+    montage_output: output/<slug>-{module}-{num}                # относительно montage_root
+    lessons_dir: производство/уроки-М{module}                   # папка урока внутри: «{dot}-<slug>/»
+    # lesson_dir_glob: "b{num}-*"                               # если папки уроков названы иначе
+    css_prefix: "<xx>{module}{num}-"                            # префикс классов конспекта
+    konspekt_etalon: производство/уроки-М1/1.1-<slug>/КОНСПЕКТ.html
+    covers_dir: производство/оформление-getcourse/обложки-kinescope
+    cover_eyebrow: "<Курс> · Модуль {module}"
+    cover_theme: light                                          # контраст к блоку плеера в конспекте
+    cover_chip: "УРОК {dot}"
+    gc_state: output/getcourse/_gc_state.json                   # сохранённый вход в GetCourse (Playwright storage_state) — НЕ коммитить
+    gc_fileindex: https://<домен-школы>/pl/fileindex/file/index
+    gc_account: <номер аккаунта GetCourse>
+    gc_training: <id тренинга>
+    registry: производство/оформление-getcourse/ВИДЕО-KINESCOPE.md
+    lesson_map: КАРТА-УРОКОВ.md
+    lesson_registry: РЕЕСТР-УРОКОВ.md
+    log: ГДЕ-МЫ-ОСТАНОВИЛИСЬ.md
+    kb_course: <Название в базе знаний>
+    kb_id: "urok-{date}-<slug>-{module}-{num}"
